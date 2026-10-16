@@ -1,0 +1,17 @@
+.impeccable/
+.claude/
+node_modules/
+*.log
+.env
+.env.*
+.DS_Store
+Thumbs.db
+# harness di prova per le schermate
+site/_*.html
+
+# report tecnico personale
+REPORT_TECNICO.md
+
+# doc superpowers
+docs/superpowers/
+design_document_scrollytelling_ghiaccio.md

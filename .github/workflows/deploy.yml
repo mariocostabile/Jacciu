@@ -1,0 +1,41 @@
+name: Deploy sito su GitHub Pages
+
+on:
+  push:
+    # Il workflow parte ad ogni push su main
+    branches: ["main"]
+  workflow_dispatch: # Permette anche l'avvio manuale dalla scheda Actions di GitHub
+
+# Permessi minimi necessari per pubblicare su GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Impedisce deploy simultanei che potrebbero sovrapporsi
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Scarica il codice del repository
+        uses: actions/checkout@v4
+
+      - name: Inizializza GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Carica i file statici
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # pubblica solo il sito (non docs, tests, workflow)
+          path: 'site'
+
+      - name: Pubblica su GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
