@@ -67,7 +67,7 @@ async function initScene() {
     const spawnY = innerHeight * 0.4; // punto di spawn del fumo: l'oggetto cresce solo da quando il bordo alto della scheda lo raggiunge
     const grow = Math.min(1, Math.max(0, (spawnY - (box.top - scrollY)) / (spawnY - 72)));
     // exit: le foto del portfolio stanno salendo, l'oggetto rimpicciolisce prima di essere coperto
-    const exit = Math.min(1, Math.max(0, (innerHeight * 1.2 - (sections.portfolio.top - scrollY)) / (innerHeight * 0.3)));
+    const exit = Math.min(1, Math.max(0, (innerHeight * 1.05 - (sections.portfolio.top - scrollY)) / (innerHeight * 0.25)));
     scene.setState({ ...st, y: scrollY, grow, exit });
     root.style.setProperty('--freeze', st.freeze.toFixed(3));
     temp.textContent = temperature(st);
