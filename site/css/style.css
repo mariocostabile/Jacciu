@@ -164,7 +164,7 @@ h1, h2, h3 { font-family: var(--font-display); margin: 0; }
 .contact-item p { margin: 0; font-weight: 600; }
 
 /* footer */
-.foot { background: var(--navy); padding-block: 2.5rem; }
+.foot { position: relative; z-index: 5; background: var(--navy); padding-block: 2.5rem; } /* sopra il velo blur (z 4) */
 .foot-note {margin:0;}
 .foot-note { font: 400 0.9rem var(--font-body); color: var(--muted); }
 
